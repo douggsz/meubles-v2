@@ -2,22 +2,28 @@
 <html lang="pt-br">
 
 <head>
-    <title>@yield('title')</title>
+    <title>
+        @isset($titulo)
+            {{ $titulo }}
+        @else
+            @yield('title')
+        @endif
+    </title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link rel="shortcut icon" href="{{ asset('img/icons/icon-48x48.png') }}"/>
-    <link href="{{ asset('/plugins/datatables/datatables.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+    <link href="{{ asset('/plugins/datatables/datatables.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css"/>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="{{ asset('/js/code.jquery.com_jquery-3.7.1.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/plugins/datatables/datatables.js')}}"></script>
+    <script src="{{ asset('js/code.jquery.com_jquery-3.7.1.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/datatables.js') }}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script>(g => {
@@ -49,53 +55,58 @@
         <div class="sidebar-content js-simplebar">
             <a class="sidebar-brand" href="{{route('inicio')}}">
 
-                <span class="align-middle">v2.0.0.1</span>
+                <span class="align-middle">v2.0.0.2</span>
 
             </a>
 
             <ul class="sidebar-nav">
                 <li class="sidebar-header">
-                    Pages
+                    Menu de navegação
                 </li>
 
                 <li class="sidebar-item <?php echo $local == 'inicio' ? 'active' : '' ?>">
                     <a class="sidebar-link" href="{{route('inicio')}}">
-                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        <i class="align-middle" data-feather="sliders"></i>
+                        <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item <?php echo $local == 'pedidos' ? 'active' : '' ?>">
                     <a class="sidebar-link" href="{{route('pedidos')}}">
-                        <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Pedidos</span>
+                        <i class="align-middle" data-feather="grid"></i>
+                        <span class="align-middle">Pedidos</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item <?php echo $local == 'pontos' ? 'active' : '' ?>">
                     <a class="sidebar-link" href="{{route('pontos')}}">
-                        <i class="align-middle" data-feather="map-pin"></i> <span
-                            class="align-middle">Pontos de Venda</span>
+                        <i class="align-middle" data-feather="map-pin"></i>
+                        <span class="align-middle">Pontos de Venda</span>
                     </a>
                 </li>
                 <li class="sidebar-item <?php echo $local == 'clientes' ? 'active' : '' ?>">
                     <a class="sidebar-link" href="{{route('clientes')}}">
-                        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Clientes</span>
+                        <i class="align-middle" data-feather="user"></i>
+                        <span class="align-middle">Clientes</span>
                     </a>
                 </li>
                 <li class="sidebar-header">
                     Relatórios
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-buttons.html">
-                        <i class="align-middle" data-feather="book"></i><span class="align-middle">Calendário de embarque</span>
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="book"></i>
+                        <span class="align-middle" style="font-size: 0.9rem">Calendário de embarque</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-forms.html">
-                        <i class="align-middle" data-feather="book"></i><span class="align-middle">Calendário de embalagem</span>
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="book"></i>
+                        <span class="align-middle" style="font-size: 0.9rem">Calendário de embalagem</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
+                    <a class="sidebar-link" href="#">
                         <i class="align-middle" data-feather="book"></i> <span
                             class="align-middle">Pedidos por data</span>
                     </a>
@@ -103,39 +114,40 @@
                 <li class="sidebar-header">
                     Pedidos
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Por situação</span>
+                <li class="sidebar-item <?php echo $local == 'pedidos-abertos' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('pedidos-abertos')}}">
+                        <i class="align-middle" data-feather="corner-down-right"></i>
+                        <span class="align-middle">Abertos</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Fechados</span>
+                <li class="sidebar-item <?php echo $local == 'pedidos-fechados' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('pedidos-fechados')}}">
+                        <i class="align-middle" data-feather="corner-down-right"></i>
+                        <span class="align-middle">Fechados</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Fechados lojas próprias</span>
+                <li class="sidebar-item <?php echo $local == 'pedidos-lojas-proprias' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('pedidos-lojas-proprias')}}">
+                        <i class="align-middle" data-feather="corner-down-right"></i>
+                        <span class="align-middle">Fechados lojas próprias</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Faturados</span>
+                <li class="sidebar-item <?php echo $local == 'pedidos-faturados' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('pedidos-faturados')}}">
+                        <i class="align-middle" data-feather="corner-down-right"></i>
+                        <span class="align-middle">Faturados</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="charts-chartjs.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Soma fechados clientes</span>
+                <li class="sidebar-item <?php echo $local == 'soma-clientes' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('soma-clientes')}}">
+                        <i class="align-middle" data-feather="corner-down-right"></i>
+                        <span class="align-middle" style="font-size: 0.9rem">Soma pedidos por cliente</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="mapsgoogle.html">
-                        <i class="align-middle" data-feather="corner-down-right"></i> <span class="align-middle">Soma faturados clientes</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="mapsgoogle.html">
-                        <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Entrega</span>
+                <li class="sidebar-item <?php echo $local == 'entrega' ? 'active' : '' ?>">
+                    <a class="sidebar-link" href="{{route('entrega')}}">
+                        <i class="align-middle" data-feather="truck"></i>
+                        <span class="align-middle">Entrega</span>
                     </a>
                 </li>
             </ul>
@@ -221,10 +233,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                         </a>
-                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="{{ asset('img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1"
-                                 alt="Charles Hall"/>
-                            <span class="text-dark">Charles Hall</span>
+                        <a class="nav-link d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+
+                            <h5 class="text-dark">
+                                <img class="img-fluid rounded-circle" src="{{asset('img/avatars/avatar.jpg')}}" style="height: 2rem"/>
+                                Denver Lopes
+                            </h5>
+                            <span class="text-dark">Função</span>
                         </a>
                     </li>
                 </ul>
@@ -238,7 +253,7 @@
         </main>
 
         <footer class="footer">
-            <p>Meubles v2.0.0.1</p>
+            <p>Meubles v2.0.0.2</p>
         </footer>
     </div>
 </div>

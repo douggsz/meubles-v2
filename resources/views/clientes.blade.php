@@ -16,7 +16,6 @@
                             <th>CPF</th>
                             <th>Endereço</th>
                             <th>Cidade</th>
-                            <th>UF</th>
                             <th>Loja</th>
                             <th>Pedidos</th>
                             </thead>

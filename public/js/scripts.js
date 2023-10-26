@@ -3,7 +3,7 @@ $('document').ready(function () {
     $('#tabelaPedido').DataTable({
         autoWidth: false,
         buttons: true,
-        ordering: false,
+        ordering: true,
         language: {
             "lengthMenu": "Mostrando _MENU_ registros por pagina",
             "zeroRecords": "Nenhum registro a ser mostrado",
@@ -25,7 +25,7 @@ $('document').ready(function () {
     $('#tabelaClientes').DataTable({
         autoWidth: false,
         buttons: true,
-        ordering: false,
+        ordering: true,
         language: {
             "lengthMenu": "Mostrando _MENU_ registros por pagina",
             "zeroRecords": "Nenhum registro a ser mostrado",

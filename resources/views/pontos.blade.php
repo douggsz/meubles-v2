@@ -42,7 +42,9 @@
                     </div>
                     <div class="card-footer" style="text-align: right">
                         <button type="submit" class="btn btn-sm btn-warning">enviar</button>
-                        <button type="reset" onclick="limpa_formulario()" data-dismiss="modal" class="btn btn-sm btn-white">cancelar</button>
+                        <button type="reset" onclick="limpa_formulario()" data-dismiss="modal"
+                                class="btn btn-sm btn-white">cancelar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -50,7 +52,6 @@
     </div>
 
     <script type="text/javascript">
-$(document).ready(function () {
 
         let map;
 
@@ -130,9 +131,6 @@ $(document).ready(function () {
                 $('#cidadePontoVenda').attr('value', getCEP["localidade"])
                 $('#numeroPontoVenda').focus();
             });
-
-
         });
-});
     </script>
 @endsection
